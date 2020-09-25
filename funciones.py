@@ -1,10 +1,4 @@
 import logging
-
-from tabulate import tabulate
-
-
-import threading
-
 from sleekxmpp import ClientXMPP
 from sleekxmpp.exceptions import IqError, IqTimeout
 from sleekxmpp.xmlstream.stanzabase import ET, ElementBase
@@ -89,9 +83,7 @@ class Funciones(ClientXMPP):
         if str(msg['type']) == "chat":
             data = []
             data.append((str(msg["from"]), str(msg["body"])))
-            ms_data = tabulate(data, headers=['From', 'Message'], tablefmt='grid')
-            print (ms_data)
-            
+            print ("recibio un mensaje--")
 
 
     def all_users(self):

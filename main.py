@@ -4,7 +4,6 @@ librerias
 
 from terminal_text_color import AlertTextColor
 import getpass 
-from tabulate import tabulate
 import registrar as reg
 import funciones as fun
 
@@ -98,8 +97,14 @@ while app_flag == True:
             num2 = None
         
         if num2 == 2:
-            data = tabulate(funciones.all_users(), headers=[ "JID", "Username","Name"], tablefmt="fancy_grid") 
-            print (data)
+            datos = funciones.all_users()
+            for i in range(len(datos)):
+                print ("------------------------------------")
+                print ("Email:",datos[i][0])
+                print ("JID:",datos[i][1])
+                print ("Username",datos[i][2])
+                print ("Name", datos[i][3])
+                print ("-------------------------------------")
             num2 = None
         
         if num2 == 3:
@@ -114,8 +119,14 @@ while app_flag == True:
             atc.info("-----DATA USER-----")
             data_user = input ("User name data\n")
             atc.info("------------------------")
-            data = tabulate(funciones.user_information(data_user), headers=[ "Email","JID", "Username", "Name"], tablefmt="grid")
-            print(data)
+            data1 = funciones.user_information(data_user)
+            print ("-------info-------")
+            print ("Email:",data1[0][0])
+            print ("JID:",data1[0][1])
+            print ("Username",data1[0][2])
+            print ("Name", data1[0][3])
+            print ("--------------------")
+
             num2 = None
         
         if num2 == 5:
