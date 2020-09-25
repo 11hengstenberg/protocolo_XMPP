@@ -2,7 +2,7 @@
 librerias
 """
 
-from terminal_text_color import AlertTextColor
+
 import getpass 
 import registrar as reg
 import funciones as fun
@@ -10,7 +10,6 @@ import funciones as fun
 """
 servidor a conectar
 """
-atc =   AlertTextColor()
 servidor = "@redes2020.xyz"
 
 num = None
@@ -25,23 +24,26 @@ while app_flag == True:
     """
 
     if login_flag == False:
-        atc.success("-----MENU-----")
+        print("-----MENU-----")
         print ("0. Exit")
         print ("1. Register")
         print ("2. Login")
         num = int(input())
-        atc.success("---------------")
+        print("---------------")
     
     else:
-        atc.warning("-----MENU-----")
+        print("-----MENU-----")
         print ("0. Exit")
         print ("1. Log out")
         print ("2. show accounts")
         print ("3. add users")
         print ("4. user information")
         print ("5. direct message")
+        print ("6. change status")
+        print ("7. show Grups")
+        print ("8. group message")
         num2 = int(input())
-        atc.warning("---------------")
+        print("---------------")
     
 
     """
@@ -53,11 +55,11 @@ while app_flag == True:
     menu 1
     """
     if num == 1:
-        atc.info("\n-----REGISTER-----\n")
+        print("\n-----REGISTER-----\n")
         name = input ("name:\n")
         username = input ("id:\n")
         password = getpass.getpass("password:\n")
-        atc.info("\n----------------------\n")
+        print("\n----------------------\n")
         register = reg.EchoBot(username+servidor,password, name)
         print(username+servidor)
             
@@ -69,10 +71,10 @@ while app_flag == True:
     
     if num == 2:
 
-        atc.info("-----LOGIN-----")
+        print("-----LOGIN-----")
         username = input("id:\n")
         password = getpass.getpass("password:\n")
-        atc.info("------------------------")
+        print("------------------------")
 
         funciones = fun.Funciones(username+servidor,password, username)
         if (funciones.connect()):
@@ -105,17 +107,17 @@ while app_flag == True:
             num2 = None
         
         if num2 == 3:
-            atc.info("-----ADD USER-----")
+            print("-----ADD USER-----")
             add_user = input ("User name\n")
-            atc.info("------------------------")
+            print("------------------------")
             funciones.add_friend(add_user+servidor)
             print ("new friend\n")
             num2= None
         
         if num2 == 4:
-            atc.info("-----DATA USER-----")
+            print("-----DATA USER-----")
             data_user = input ("User name data\n")
-            atc.info("------------------------")
+            print("------------------------")
             data1 = funciones.user_information(data_user)
             print ("-------info-------")
             print ("Email:",data1[0][0])
@@ -127,21 +129,36 @@ while app_flag == True:
             num2 = None
         
         if num2 == 5:
-            atc.info("-----DIRECT MESSAGE-----")
+            print("-----DIRECT MESSAGE-----")
             data_user = input ("User name:\n")
             message = input ("message:\n")
-            atc.info("------------------------")
+            print("------------------------")
             funciones.direct_message(data_user+servidor,message)
             num2 = None
-
-            
-
-
-            
-
         
+        if num2 == 6:
+            new_estado = ["chat","awat", "xa","dnd"]
+            print ("-------Change Status-------")
+            print ("1. chat")
+            print ("2. away")
+            print ("3. xa")
+            print ("4. dnd") 
+            resultado = int(input ("State:\n"))
+            msg = input ("message:\n")
+            seleccion = new_estado[resultado-1]
+            print (seleccion)
+            funciones.state(seleccion,msg)
+            num2 = None
 
+        if num2 == 7:
+            print ("------show grups------")
+            print ("-----------------------")
+            funciones.show_Rooms()
+            print ("---------------------")
 
+        if num2 == 8:
+            print ("-------group message-------")
+            
 
 
 

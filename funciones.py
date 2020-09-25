@@ -52,7 +52,7 @@ class Funciones(ClientXMPP):
             self.send_presence(new_status = "Conectado")
             roster = self.get_roster()
 
-            for i in roster["roster"]["items"].keys():
+            for i in roster["ro ster"]["items"].keys():
                 self.contacts.append(i)
         except IqError as err:
             print ("Error: %s" % err.iq['error']['text'])
@@ -167,4 +167,20 @@ class Funciones(ClientXMPP):
         print ("send")
         print (username)
         print (msg)
+    
+    def state(self,new_state,msg):
+        self.send_presence(pshow=new_state, pstatus=msg)
+    
+    def show_Rooms(self):
+
+        result = self['xep_0030'].get_items(jid='conference.redes2020.xyz', iterator=True)
+        print("\n----------grups----------: ")
+        for room_name in result['disco_items']:
+            print(room_name['jid'])
+        
+        """
+        Extraido de 
+        https://stackoverflow.com/questions/39426720/sleekxmpp-muc-room-list-and-discovering
+        """
+
             
