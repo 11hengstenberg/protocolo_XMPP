@@ -47,7 +47,7 @@ $ python main.py
 sleekxmpp documentation: <a href="https://sleekxmpp.readthedocs.io/en/latest/" target="_blank">`https://sleekxmpp.readthedocs.io/en/latest/`</a>.
 
 ## contributors
-:man_astronaut: [Fernando Hengstenberg])(https://github.com/11hengstenberg)
+:man_astronaut: [Fernando Hengstenberg](https://github.com/11hengstenberg)
 
 
 
