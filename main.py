@@ -82,9 +82,6 @@ while app_flag == True:
             num = None 
 
     
-
-
-
     """
     menu 2
     """
